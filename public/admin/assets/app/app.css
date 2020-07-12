@@ -1,0 +1,181 @@
+.table-responsive, .sidebar .sidebar-wrapper, .off-canvas-sidebar .sidebar-wrapper {
+  overflow: unset;
+}
+
+.sidebar-wrapper .sub-nav[role=navigation] {
+  padding-left: 45px;
+}
+
+a[data-toggle=collapse][aria-expanded=true] p > i {
+  transform: rotate(90deg);
+}
+
+.bootstrap-tagsinput {
+  /* margin: 10px; */
+  display: flex;
+  flex-wrap: wrap;
+}
+.bootstrap-tagsinput input, input.tags {
+  border: none;
+  margin-right: 5px;
+  flex: 1;
+}
+.bootstrap-tagsinput input:focus {
+  outline: none;
+}
+.bootstrap-tagsinput .tag {
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.6);
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4;
+  white-space: nowrap;
+  margin: 0 3px 3px 3px;
+  
+}
+
+.bootstrap-tagsinput .tag:first-child {
+  margin-left: 0;
+}
+
+.bootstrap-tagsinput .tag span[data-role=remove] {
+  display: inline-block;
+  font: normal normal normal 14px/1 'nucleo-icons';
+  font-size: inherit;
+  speak: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.bootstrap-tagsinput .tag span[data-role=remove]::before{
+  content: "\ea4f";
+}
+
+/* .chip-box__chip>.mdl-chip__text {
+  cursor: default;
+} */
+
+.bootstrap-tagsinput .tag:hover {
+  background-color: #b4d6ee;
+  color: #1f608e;
+}
+
+.bootstrap-tagsinput .tag:hover:active {
+  outline: none;
+  background-color: #26a69a;
+  color: #fff;
+}
+.form-control.focused {
+  border: 1px solid #9A9A9A;
+  box-shadow: none;
+  outline: 0 !important;
+  color: #66615B;
+}
+
+.dropdown-select {
+  position: absolute;
+  z-index: 3;
+  border: 1px solid rgba(220, 220, 220, 0.8);
+  outline: none;
+  left: 0;
+  right: 0;
+  display: none; 
+}
+.dropdown-select:focus {
+  outline: none; 
+}
+.dropdown-select ul {
+  overflow-y: auto; 
+}
+.dropdown-select ul li {
+  cursor: pointer;
+  border-left: none;
+  border-right: none; 
+}
+.dropdown-select ul li:not(.list-group-item-secondary):not(.list-group-item-primary):hover, .dropdown-select ul li:not(.list-group-item-secondary):not(.list-group-item-primary).hover {
+  background-color: rgba(220, 220, 220, 0.3);
+}
+.dropdown-select ul li:not(.list-group-item-secondary).list-group-item-primary:hover, .dropdown-select ul li:not(.list-group-item-secondary).list-group-item-primary.hover {
+  font-weight: bold; 
+}
+
+.opened .dropdown-select {
+  display: block; }
+
+
+/*# sourceMappingURL=multiple-select.css.map*/
+
+.dropzone.form-control {
+  border-width: 1px !important;
+}
+.dropzone .dz-message {
+  margin: auto;
+}
+.dz-filename {
+  display: none;
+}
+.btn-group a.active{
+  color: #66615B !important;
+  background-color: rgba(222, 222, 222, 0.5) !important;
+}
+.btn-group .btn:hover {
+  background-color: rgba(222, 222, 222, 0.7) !important;
+  color: black !important;
+}
+.btn-group .btn {
+  border: 0;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: unset;
+}
+
+.btn-group .btn:not(:last-child) {
+  border-right: 1px solid #DDDDDD;
+}
+
+.card.custom .h3, .card.custom h3 {
+  font-size: 1.0625rem;
+}
+
+.card.custom .table .thead-light th {
+  background-color: #f6f9fc;
+  color: #8898aa;
+  font-weight: 500;
+}
+
+.card.custom .table thead th {
+  padding-top: .75rem !important;
+  padding-bottom: .75rem !important;
+  font-size: .65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  border-bottom: 1px solid #e9ecef !important;
+  padding-left: 1.4rem !important;
+  padding-right: 1.4rem !important;
+}
+
+.card.custom .table td, .table th {
+  font-size: .8125rem;
+  white-space: nowrap;
+  padding-left: 1.4rem !important;
+  padding-right: 1.4rem !important;
+}
+
+.card.custom .table th {
+  font-weight: 500;
+}
+
+.card.custom .btn {
+  padding: .25rem .6rem;
+  line-height: 1.8;
+  text-transform: none;
+  transition: all .15s ease;
+  letter-spacing: .025em;
+  font-size: .8rem;
+  will-change: transform;
+  font-weight: 400;
+}

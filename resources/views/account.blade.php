@@ -1,29 +1,24 @@
-
-@if (Auth::check())
-    {{-- return redirect('home'); --}}
-    <script>
-        // your "Imaginary javascript"
-         window.location.href = '{{url("home")}}';
-    </script>        
-@endif
-
 <!doctype html>
 <html lang="en">
-
+    
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Authentication forms">
     <meta name="author" content="Arasari Studio">
-
+    
     <title>{{ config('app.name')}}</title>
     <link href="https://arasari.studio/wp-content/projects/forny/templates/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://arasari.studio/wp-content/projects/forny/templates/css/common.css" rel="stylesheet">
-
+    <link ref="{{asset('/plugin/Notiflix/notiflix-2.1.3.min.css')}}">
     
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
     <link href="https://arasari.studio/wp-content/projects/forny/templates/css/theme-07.css" rel="stylesheet">
-
+    <style>
+        .nav-tabs .nav-link:hover {
+            border-color: transparent;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,13 +32,6 @@
                             Speedkartz
                             {{-- <img src="https://arasari.studio/wp-content/projects/forny/templates/img/logo-07.svg"> --}}
                         </div>
-
-                        @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger">
-                                {{ $error }}
-                            </div>
-                        @endforeach
-
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active bg-transparent" href="#login" data-toggle="tab" role="tab">
@@ -56,7 +44,15 @@
                                 </a>
                             </li>
                         </ul>
-
+                        @if (count($errors) > 0)
+                            <div class="error">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="tab-content">
                             <div class="tab-pane fade show active" role="tabpanel" id="login">
                                 <p class="mt-6 mb-6">
@@ -293,6 +289,7 @@
     </div>
 
     <script src="https://arasari.studio/wp-content/projects/forny/templates/js/jquery.min.js"></script>
+    <script src="{{asset('/plugin/Notiflix/notiflix-2.1.3.min.css')}}"></script>
     <script src="https://arasari.studio/wp-content/projects/forny/templates/js/bootstrap.min.js"></script>
     <script src="https://arasari.studio/wp-content/projects/forny/templates/js/main.js"></script>
     <script src="https://arasari.studio/wp-content/projects/forny/templates/js/demo.js"></script>

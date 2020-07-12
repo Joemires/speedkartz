@@ -14,16 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('home')->name('home');
-});
-
+Route::get('', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'account'], function () {
 
     Route::get('', function () {
         return view('account');
-    });
+    })->name('login');
     // Authentication Routes...
     // $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
     $this->post('login', 'Auth\LoginController@login')->name('post-login');
@@ -42,4 +39,21 @@ Route::group(['prefix' => 'account'], function () {
 
 // Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => 'author'], function () {
+    $this -> get('/home', function() {
+        return view('admin.home');
+    })->name('dashboard.home');
+    Route::group(['prefix' => 'product'], function () {
+        $this -> match(['get', 'post'], '/add', 'ProductController@index')->name('product.add');
+    });
+
+    Route::group(['prefix' => 'category'], function () {
+        $this -> get('list', 'CategoryController@index')->name('product.category');
+        $this -> match(['get', 'post'], 'add', 'CategoryController@add')->name('product.category.add');
+    });
+
+    Route::group(['prefix' => 'subcategory'], function () {
+        $this -> get('list', 'SubcategoryController@index')->name('product.subcategory');
+        $this -> match(['get', 'post'], 'add', 'SubcategoryController@add')->name('product.subcategory.add');
+    });
+});
