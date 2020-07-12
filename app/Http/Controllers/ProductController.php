@@ -55,13 +55,13 @@ class ProductController extends Controller
         # code...
 
         $request->validate([
-            'category_id' => 'required|exists:product_category,pc_id',
-            'subcategory_name' => 'required|max:255',
+            'subcategory_id' => 'required|exists:product_subcategory,ps_id',
+            'product_name' => 'required|max:255',
             // 'category_tag' => 'required|string',
-            'subcategory_desc' => 'required|string|min:50',
+            'product_desc' => 'required|string|min:50',
             // 'subcategory_captions' => 'required|string',
-            // 'subcategory_img' => 'required',
-            // 'subcategory_img.*' => 'max:2000|mimes:jpg,png,gif,jpeg'
+            'product_img' => 'required',
+            'product_img.*' => 'max:2000|mimes:jpg,png,gif,jpeg'
         ]);
     }
 
