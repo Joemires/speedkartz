@@ -63,6 +63,8 @@ class CategoryController extends Controller
     {
         # code...
         $data = $request->all();
+        // print_r($data);
+        // exit();
         $request->validate([
             'category_name' => 'required|max:255',
             // 'category_tag' => 'required|string',
@@ -81,7 +83,7 @@ class CategoryController extends Controller
                 $file->move(public_path().'/uploads/category/', $name);  
                 $s_path[] = $name;
             }
-            print_r($s_path);
+            // print_r($s_path);
         }
 
         

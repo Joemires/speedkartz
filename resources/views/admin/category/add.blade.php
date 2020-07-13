@@ -44,7 +44,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>{{ $type == 'category' ? 'Select A Caption' : 'Select Category'}}</label>
-                                <select name="{{ 'category_'.($type == 'category' ? 'caption' : 'id') }}" class="form-control" placeholder="Placeholder text" required multiselect>
+                                <select name="{{ 'category_'.($type == 'category' ? 'captions' : 'id') }}" class="form-control" placeholder="Placeholder text" required multiselect>
                                     <option value=1>New</option>
                                     <option value=2>Hot</option>
                                     <option value=2>Trending</option>
@@ -123,7 +123,7 @@
     Dropzone.autoDiscover = false;
     $(() => {
         // jQuery
-        $("#dropzone_uploader").dropzone({
+        var dropzoneUploader = $("#dropzone_uploader").dropzone({
             url: "{{ url()->current() }}",
             autoProcessQueue: false,
             dictDuplicateFile: "Duplicate Files Cannot Be Uploaded",
@@ -171,20 +171,39 @@
                 });
                 
                 this.on("errormultiple", function(files, response) {
+                    console.log(response)
                     $('button').each( function() {
                         $(this).prop('disabled', true)
                     })
+                    var errMsg = [];
+                    if(response.message.toLowerCase().includes('duplicate entry')) {
+                        errMsg = "{{ $title }} already exist, please create new one or edit the formal one."
+                    } else if(typeof response.erros !== 'null') {
+                        console.log(response.errors)
+                        for (const error in response.errors) {
+                            if (response.errors.hasOwnProperty(error)) {
+                                const element = response.errors[error];
+                                element.forEach(msg => {
+                                    errMsg.push(msg)
+                                });
+                            }
+                        }
+
+                        errMsg = errMsg.join(', ');
+                    }
                     $.notify({
                         icon: 'nc-icon nc-bulb-63',
                         title: '<h6 class="m-0 mb-2">Oops!</h6>',
-                        message: '<p class="m-0" style="line-height: 1.5;">' + response.message + '</p>',
+                        message: '<p class="m-0" style="line-height: 1.5;">Some entrys are in incorrect <br> ' + errMsg + '</p>',
                     }, {
                         allow_disable: false,
                         delay: 0,
                         type: 'danger',
                         onClose: function() {
-                            $(".dz-preview").fadeOut('slow');
-                            $(".dz-preview:hidden").remove();
+                            $(".dz-preview").fadeOut('slow', function() {
+                                dropzoneUploader[0].dropzone.removeAllFiles();
+                            })
+                            
                             $('button').each( function() {
                                 $(this).prop('disabled', false)
                             })
