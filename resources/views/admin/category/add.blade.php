@@ -147,7 +147,6 @@
                     $.each(formValues, function(key, value){
                         formData.append(key,value);
                     });
-                    console.log(formData)
                     // return
                 });
                 this.on("successmultiple", function(files, response) {
@@ -171,7 +170,6 @@
                 });
                 
                 this.on("errormultiple", function(files, response) {
-                    console.log(response)
                     $('button').each( function() {
                         $(this).prop('disabled', true)
                     })
@@ -179,7 +177,6 @@
                     if(response.message.toLowerCase().includes('duplicate entry')) {
                         errMsg = "{{ $title }} already exist, please create new one or edit the formal one."
                     } else if(typeof response.erros !== 'null') {
-                        console.log(response.errors)
                         for (const error in response.errors) {
                             if (response.errors.hasOwnProperty(error)) {
                                 const element = response.errors[error];
