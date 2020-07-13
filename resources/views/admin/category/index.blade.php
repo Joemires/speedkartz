@@ -36,12 +36,14 @@
                                 <th scope="row">
                                     {{-- <div class="media d-flex align-items-center"><a href="#" class="avatar rounded-circle mr-3"><img alt="Image placeholder" src="https://demos.creative-tim.com/impact-design-system/dashboard/assets/img/theme/bootstrap.jpg"></a><div class="media-body"><span class="name mb-0 text-sm">Impact Design System</span></div></div> --}}
                                     <div class="media align-items-center">
-                                        <div class="avatar rounded-circle m-0" style="display: table-cell">
+                                        <div class="avatar m-0" style="display: table-cell">
                                             @php
                                                 $imgs = json_decode($stat -> pc_images);
                                                 $img_src = $imgs[0];
                                             @endphp
+                                            @if (file_exists(public_path('uploads/category/'.$img_src)))
                                             <img alt="Image placeholder" src="{{asset('uploads/category/'.$img_src)}}">
+                                            @endif
                                         </div>
                                         <div class="media-body" style="display: table-cell">
                                             <span class="ml-2 mb-0 text-sm text-capitalize">{{ $stat->pc_name }}</span>
@@ -51,6 +53,7 @@
                                 <td></td>
                                 <td>340</td>
                                 <td><i class="fas fa-arrow-up text-success mr-3"></i> 46,53%</td>
+                                <td></td>
                             </tr>
                             @endforeach
                         </tbody>

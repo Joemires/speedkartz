@@ -14,7 +14,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Products</p>
-              <p class="card-title">150</p><p>
+              <p class="card-title">0</p><p>
             </p></div>
           </div>
         </div>
@@ -40,7 +40,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Customers</p>
-              <p class="card-title">$ 1,345</p><p>
+              <p class="card-title">0</p><p>
             </p></div>
           </div>
         </div>
@@ -66,7 +66,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Orders</p>
-              <p class="card-title">23</p><p>
+              <p class="card-title">0</p><p>
             </p></div>
           </div>
         </div>
@@ -92,7 +92,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Delivery</p>
-              <p class="card-title">+45K</p><p>
+              <p class="card-title">+0</p><p>
             </p></div>
           </div>
         </div>
@@ -129,12 +129,12 @@
             <tbody>
               <tr>
                 <td> 1 </td>
-                <td> Dakota Rice </td> <td> Niger </td>
-                <td> Oud-Turnhout </td>
-                <td> $36,738 </td>
+                <td> Sample </td> <td> Sample </td>
+                <td> Sample </td>
+                <td> NGN 0 </td>
                 <td>  </td>
               </tr>
-              <tr>
+              <tr class="d-none">
                 <td> 2 </td>
                 <td> Minerva Hooper </td>
                 <td> Curaçao </td>

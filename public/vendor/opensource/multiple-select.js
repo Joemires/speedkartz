@@ -308,3 +308,13 @@ return this._hoveredItemIndex}
 set hoveredItemIndex(index){this._hoveredItemIndex=index
 this.emit('hoveredItemIndexChange',index)}}
 __webpack_exports__["a"]=(Store);})});
+
+$( () => {
+    const multiselect = document.querySelectorAll('form select[multiselect]');
+
+    multiselect.forEach( function(elem) {
+        new MultipleSelect('[name=' + $(elem).attr('name') + ']', {
+            placeholder: $(elem).attr('placeholder')
+        })
+    })
+})

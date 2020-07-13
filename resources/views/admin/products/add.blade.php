@@ -45,7 +45,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Product Category</label>
-                                    <select name="p_cat" class="form-control">
+                                    <select name="p_cat" class="form-control" multiselect>
                                         <option value="" selected disabled> Select a category </option>
                                         @foreach ($categories as $category)
                                         <option value="{{$category -> pc_id }}"> {{$category -> pc_name}} </option>
@@ -57,7 +57,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Product Subcategory</label>
-                                    <select name="p_subcat" class="form-control" placeholder="Select a subcategory" multiple>
+                                    <select name="p_subcat" class="form-control" placeholder="Select a subcategory" multiple multiselect>
                                     </select>
                                 </div>
                             </div>
@@ -167,33 +167,27 @@
             })
         })
 
-        Array('[name=p_cat]', '[name=p_subcat]', '[name=o_type').forEach( function(target) {
-            new MultipleSelect(target, {
-                placeholder: $(target).attr('placeholder')
-            })
-        })
-
         @php
         echo 'var categories = '. json_encode($categories) . ';';
         @endphp
 
         $('[name=p_cat]').on('change', function(e) {
             if(typeof $(this).val() !== "null" && $(this).val()) {
+                var elem = $('[name=p_subcat]')
+                elem.html('');
                 var mc = categories[$(this).val()].subcategory;
-                console.log(mc)
-                $('[name=p_subcat]').html('');
                 for (const cat in mc) {
                     console.log(cat)
                     if (mc.hasOwnProperty(cat)) {
                         const element = mc[cat];
-                        // console.log(element)
-                        window.selectMultipleContainerId = 0;
-                        $('[name=p_subcat]').append('<option>Hello</option>').next().remove()
-                        new MultipleSelect('[name=p_subcat]', {
-                            placeholder: $('[name=p_subcat]').attr('placeholder')
-                        })
+                        elem.append('<option vlaue='+ element.ps_id +'>'+ element.ps_name +'</option>')
                     }
                 }
+                elem.next().remove()
+                window.selectMultipleContainerId = 0;
+                new MultipleSelect('[name=p_subcat]', {
+                    placeholder: $('[name=p_subcat]').attr('placeholder')
+                })
             }
         })
 
